@@ -11,16 +11,15 @@ function Info() {
     const [episodeUrl, setEpisodeUrl] = useState(null)
     const [server, setServer] = useState([])
     const [active, setActive] = useState(0)
-    const [{info, featured, airing }, dispatch] = useStateProvider()
-
-    
+    const [{info }, dispatch] = useStateProvider()
     useEffect(() => {
+        window.scrollTo(0, 0);
         const getInfo = async () => {
            try{
             const response = await axios.get(`https://api.consumet.org/anime/gogoanime/info/${id}`)
-            let selectedEpisodeId = response.data.episodes[0].id; // Default to the first episode ID
+            let selectedEpisodeId = response.data.episodes[0].id;
             if (videoId !== "null") {
-                selectedEpisodeId = videoId; // Use the provided videoId if it's not null
+                selectedEpisodeId = videoId; 
             }
             const episode = await axios.get(`https://api.consumet.org/anime/gogoanime/servers/${selectedEpisodeId}`)
             dispatch({type: reducerCases.SET_INFO, info: response.data})
@@ -41,10 +40,6 @@ function Info() {
       setActive(index)
       setEpisodeUrl(server)
     }
-
-
-
-
     return (
         <div className="InfoContainer">
             <div className="WatchContainer">
@@ -88,7 +83,7 @@ function Info() {
                 ))}
             </div>
            </div>
-           <Featured/>
+           <Featured />
         </div>
       );
 }

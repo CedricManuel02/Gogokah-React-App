@@ -1,11 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStateProvider } from "../utils/StateProvider";
 import Card from "./Card";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { reducerCases } from "../utils/Constants";
 
 function Featured() {
-  const [{ airing, episode }] = useStateProvider();
   const [active , setActive] = useState(1);
+  const [{ airing, episode}, dispatch] = useStateProvider();
+  useEffect(() => {
+    const apiOne = axios.get(
+      "https://api.consumet.org/anime/gogoanime/top-airing"
+    );
+    const apiThree = axios.get(
+      "https://api.consumet.org/anime/gogoanime/recent-episodes"
+    );
+    axios.all([apiOne, apiThree]).then(
+      axios.spread((...allData) => {
+        const getOne = allData[0].data.results;
+        const getThree = allData[1].data.results;
+        dispatch({type: reducerCases.SET_TOP_AIRING, airing: getOne,})
+        dispatch({type: reducerCases.SET_RECENT_EPISODE, episode: getThree,})
+      })
+    );
+  }, []);
     return ( 
         <div className="FeaturedContainer">
             <header>

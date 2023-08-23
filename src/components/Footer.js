@@ -7,16 +7,16 @@ function Footer() {
     return ( 
         <footer>
             <section>
-                <p>Find an issue with this page? <Link to={"/"}>Fix it on Github</Link></p>
+                <p>Find an issue with this page? <Link to={"https://github.com/CedricManuel02/Gogokah-React-App"}>Fix it on Github</Link></p>
                 <hr/>
                 <p>Copyright © 2023 GoGoKah</p>
                 <p>Created with <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="image"/> by <Link to={"/"}>Cedric Manuel</Link></p>
                 <hr/>
                 <ul>
-                    <li><Link><GitHubIcon id="icon"/></Link></li>
-                    <li><Link><FacebookRoundedIcon  id="icon"/></Link></li>
-                    <li><Link><TwitterIcon  id="icon"/></Link></li>
-                    <li><Link><InstagramIcon  id="icon"/></Link></li>
+                    <li><Link to={"https://github.com/CedricManuel02"}><GitHubIcon id="icon"/></Link></li>
+                    <li><Link to={"https://github.com/CedricManuel02"}><FacebookRoundedIcon  id="icon"/></Link></li>
+                    <li><Link to={"https://github.com/CedricManuel02"}><TwitterIcon  id="icon"/></Link></li>
+                    <li><Link to={"https://github.com/CedricManuel02"}><InstagramIcon  id="icon"/></Link></li>
                 </ul>
             </section>
            
